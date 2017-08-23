@@ -104,7 +104,6 @@ require dirname( __FILE__ ) . '/testcase.php';
 require dirname( __FILE__ ) . '/testcase-rest-api.php';
 require dirname( __FILE__ ) . '/testcase-rest-controller.php';
 require dirname( __FILE__ ) . '/testcase-rest-post-type-controller.php';
-require dirname( __FILE__ ) . '/testcase-xmlrpc.php';
 require dirname( __FILE__ ) . '/testcase-ajax.php';
 require dirname( __FILE__ ) . '/testcase-canonical.php';
 require dirname( __FILE__ ) . '/exceptions.php';
