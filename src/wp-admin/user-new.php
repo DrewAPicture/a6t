@@ -25,10 +25,6 @@ if ( is_multisite() ) {
 	);
 }
 
-if ( is_multisite() ) {
-	add_filter( 'wpmu_signup_user_notification_email', 'admin_created_user_email' );
-}
-
 if ( isset($_REQUEST['action']) && 'adduser' == $_REQUEST['action'] ) {
 	check_admin_referer( 'add-user', '_wpnonce_add-user' );
 

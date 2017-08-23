@@ -75,20 +75,14 @@ class Tests_Multisite_WpmuValidateUserSignup extends WP_UnitTestCase {
 	}
 
 	public function test_should_fail_for_existing_signup_with_same_username() {
-		// Don't send notifications.
-		add_filter( 'wpmu_signup_user_notification', '__return_true' );
 		wpmu_signup_user( 'foo123', 'foo@example.com' );
-		remove_filter( 'wpmu_signup_user_notification', '__return_true' );
 
 		$v = wpmu_validate_user_signup( 'foo123', 'foo2@example.com' );
 		$this->assertContains( 'user_name', $v['errors']->get_error_codes() );
 	}
 
 	public function test_should_not_fail_for_existing_signup_with_same_username_if_signup_is_old() {
-		// Don't send notifications.
-		add_filter( 'wpmu_signup_user_notification', '__return_true' );
 		wpmu_signup_user( 'foo123', 'foo@example.com' );
-		remove_filter( 'wpmu_signup_user_notification', '__return_true' );
 
 		global $wpdb;
 		$date = date( 'Y-m-d H:i:s', time() - ( 2 * DAY_IN_SECONDS ) - 60 );
@@ -99,20 +93,14 @@ class Tests_Multisite_WpmuValidateUserSignup extends WP_UnitTestCase {
 	}
 
 	public function test_should_fail_for_existing_signup_with_same_email() {
-		// Don't send notifications.
-		add_filter( 'wpmu_signup_user_notification', '__return_true' );
 		wpmu_signup_user( 'foo123', 'foo@example.com' );
-		remove_filter( 'wpmu_signup_user_notification', '__return_true' );
 
 		$v = wpmu_validate_user_signup( 'foo2', 'foo@example.com' );
 		$this->assertContains( 'user_email', $v['errors']->get_error_codes() );
 	}
 
 	public function test_should_not_fail_for_existing_signup_with_same_email_if_signup_is_old() {
-		// Don't send notifications.
-		add_filter( 'wpmu_signup_user_notification', '__return_true' );
 		wpmu_signup_user( 'foo123', 'foo@example.com' );
-		remove_filter( 'wpmu_signup_user_notification', '__return_true' );
 
 		global $wpdb;
 		$date = date( 'Y-m-d H:i:s', time() - ( 2 * DAY_IN_SECONDS ) - 60 );

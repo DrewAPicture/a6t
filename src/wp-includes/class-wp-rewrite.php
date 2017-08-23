@@ -1234,16 +1234,6 @@ class WP_Rewrite {
 			'.*wp-app\.php(/.*)?$' => $this->index . '?error=403',
 		);
 
-		// Registration rules.
-		$registration_pages = array();
-		if ( is_multisite() && is_main_site() ) {
-			$registration_pages['.*wp-signup.php$'] = $this->index . '?signup=true';
-			$registration_pages['.*wp-activate.php$'] = $this->index . '?activate=true';
-		}
-
-		// Deprecated.
-		$registration_pages['.*wp-register.php$'] = $this->index . '?register=true';
-
 		// Post rewrite rules.
 		$post_rewrite = $this->generate_rewrite_rules( $this->permalink_structure, EP_PERMALINK );
 
@@ -1383,9 +1373,9 @@ class WP_Rewrite {
 
 		// Put them together.
 		if ( $this->use_verbose_page_rules )
-			$this->rules = array_merge($this->extra_rules_top, $robots_rewrite, $deprecated_files, $registration_pages, $root_rewrite, $comments_rewrite, $search_rewrite,  $author_rewrite, $date_rewrite, $page_rewrite, $post_rewrite, $this->extra_rules);
+			$this->rules = array_merge($this->extra_rules_top, $robots_rewrite, $deprecated_files, $root_rewrite, $comments_rewrite, $search_rewrite,  $author_rewrite, $date_rewrite, $page_rewrite, $post_rewrite, $this->extra_rules);
 		else
-			$this->rules = array_merge($this->extra_rules_top, $robots_rewrite, $deprecated_files, $registration_pages, $root_rewrite, $comments_rewrite, $search_rewrite,  $author_rewrite, $date_rewrite, $post_rewrite, $page_rewrite, $this->extra_rules);
+			$this->rules = array_merge($this->extra_rules_top, $robots_rewrite, $deprecated_files, $root_rewrite, $comments_rewrite, $search_rewrite,  $author_rewrite, $date_rewrite, $post_rewrite, $page_rewrite, $this->extra_rules);
 
 		/**
 		 * Fires after the rewrite rules are generated.
