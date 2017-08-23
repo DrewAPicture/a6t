@@ -2556,12 +2556,9 @@ function make_site_theme_from_oldschool($theme_name, $template) {
 		// Check to make sure it's not a new index.
 		if ($oldfile == 'index.php') {
 			$index = implode('', file("$oldpath/$oldfile"));
-			if (strpos($index, 'WP_USE_THEMES') !== false) {
-				if (! @copy(WP_CONTENT_DIR . '/themes/' . WP_DEFAULT_THEME . '/index.php', "$site_dir/$newfile"))
-					return false;
 
-				// Don't copy anything.
-				continue;
+			if (! @copy(WP_CONTENT_DIR . '/themes/' . WP_DEFAULT_THEME . '/index.php', "$site_dir/$newfile")) {
+				return false;
 			}
 		}
 
