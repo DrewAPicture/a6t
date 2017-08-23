@@ -1,15 +1,15 @@
 {
-  "name": "WordPress",
-  "version": "4.9.0",
-  "description": "WordPress is web software you can use to create a beautiful website or blog.",
+  "name": "A6T",
+  "version": "1.0.0-alpha",
+  "description": "",
   "repository": {
-    "type": "svn",
-    "url": "https://develop.svn.wordpress.org/trunk"
+    "type": "git",
+    "url": "https://github.com/DrewAPicture/a6t"
   },
   "engines": {
     "node": "6.9.1"
   },
-  "author": "The WordPress Contributors",
+  "author": "",
   "license": "GPL-2.0+",
   "devDependencies": {
     "autoprefixer": "^6.5.1",
