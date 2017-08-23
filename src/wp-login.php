@@ -692,18 +692,6 @@ login_footer('user_pass');
 break;
 
 case 'register' :
-	if ( is_multisite() ) {
-		/**
-		 * Filters the Multisite sign up URL.
-		 *
-		 * @since 3.0.0
-		 *
-		 * @param string $sign_up_url The sign up URL.
-		 */
-		wp_redirect( apply_filters( 'wp_signup_location', network_site_url( 'wp-signup.php' ) ) );
-		exit;
-	}
-
 	if ( !get_option('users_can_register') ) {
 		wp_redirect( site_url('wp-login.php?registration=disabled') );
 		exit();

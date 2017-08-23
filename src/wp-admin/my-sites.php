@@ -61,8 +61,6 @@ echo esc_html( $title );
 
 <?php
 if ( in_array( get_site_option( 'registration' ), array( 'all', 'blog' ) ) ) {
-	/** This filter is documented in wp-login.php */
-	$sign_up_url = apply_filters( 'wp_signup_location', network_site_url( 'wp-signup.php' ) );
 	printf( ' <a href="%s" class="page-title-action">%s</a>', esc_url( $sign_up_url ), esc_html_x( 'Add New', 'site' ) );
 }
 

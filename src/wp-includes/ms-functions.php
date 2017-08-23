@@ -1816,47 +1816,6 @@ function signup_nonce_fields() {
 }
 
 /**
- * Process the signup nonce created in signup_nonce_fields().
- *
- * @since MU (3.0.0)
- *
- * @param array $result
- * @return array
- */
-function signup_nonce_check( $result ) {
-	if ( !strpos( $_SERVER[ 'PHP_SELF' ], 'wp-signup.php' ) )
-		return $result;
-
-	if ( wp_create_nonce('signup_form_' . $_POST[ 'signup_form_id' ]) != $_POST['_signup_form'] )
-		wp_die( __( 'Please try again.' ) );
-
-	return $result;
-}
-
-/**
- * Correct 404 redirects when NOBLOGREDIRECT is defined.
- *
- * @since MU (3.0.0)
- */
-function maybe_redirect_404() {
-	/**
-	 * Filters the redirect URL for 404s on the main site.
-	 *
-	 * The filter is only evaluated if the NOBLOGREDIRECT constant is defined.
-	 *
-	 * @since 3.0.0
-	 *
-	 * @param string $no_blog_redirect The redirect URL defined in NOBLOGREDIRECT.
-	 */
-	if ( is_main_site() && is_404() && defined( 'NOBLOGREDIRECT' ) && ( $destination = apply_filters( 'blog_redirect_404', NOBLOGREDIRECT ) ) ) {
-		if ( $destination == '%siteurl%' )
-			$destination = network_home_url();
-		wp_redirect( $destination );
-		exit();
-	}
-}
-
-/**
  * Add a new user to a blog by visiting /newbloguser/username/.
  *
  * This will only work when the user's details are saved as an option

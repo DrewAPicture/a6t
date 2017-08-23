@@ -400,10 +400,7 @@ function ms_load_current_site_and_network( $domain, $path, $subdomain = false ) 
 		 */
 		do_action( 'ms_site_not_found', $current_site, $domain, $path );
 
-		if ( $subdomain && ! defined( 'NOBLOGREDIRECT' ) ) {
-			// For a "subdomain" installation, redirect to the signup form specifically.
-			$destination .= 'wp-signup.php?new=' . str_replace( '.' . $current_site->domain, '', $domain );
-		} elseif ( $subdomain ) {
+		if ( $subdomain ) {
 			// For a "subdomain" installation, the NOBLOGREDIRECT constant
 			// can be used to avoid a redirect to the signup form.
 			// Using the ms_site_not_found action is preferred to the constant.
