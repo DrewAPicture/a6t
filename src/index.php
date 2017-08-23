@@ -6,5 +6,11 @@
  * @package WordPress
  */
 
-/** Loads the WordPress Environment and Template */
-require( dirname( __FILE__ ) . '/wp-blog-header.php' );
+// Load the WordPress library.
+require_once( dirname(__FILE__) . '/wp-load.php' );
+
+// Set up the WordPress query.
+wp();
+
+// Load the theme template.
+require_once( ABSPATH . WPINC . '/template-loader.php' );
