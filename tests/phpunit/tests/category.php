@@ -16,8 +16,6 @@ class Tests_Category extends WP_UnitTestCase {
 
 	/**
 	 * Validate get_all_category_ids
-	 *
-	 * @expectedDeprecated get_all_category_ids
 	 */
 	function test_get_all_category_ids() {
 		// create categories
@@ -28,7 +26,7 @@ class Tests_Category extends WP_UnitTestCase {
 		wp_insert_term( "test1", 'test_tax_cat' );
 
 		// Validate length is 1 + created due to uncategorized
-		$cat_ids = get_all_category_ids();
+		$cat_ids = get_terms( 'category', array( 'fields' => 'ids', 'get' => 'all' ) );
 		$this->assertEquals( 3, count($cat_ids));
 	}
 
